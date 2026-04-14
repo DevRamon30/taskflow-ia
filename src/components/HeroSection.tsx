@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
-import heroImg from "@/assets/hero-illustration.jpg";
+import DashboardPreview from "@/components/DashboardPreview";
 
 const HeroSection = () => {
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="relative pt-32 pb-20 overflow-hidden">
       <div className="container mx-auto px-4">
@@ -27,24 +31,18 @@ const HeroSection = () => {
                   Começar Gratuitamente <ArrowRight className="h-4 w-4" />
                 </Button>
               </Link>
-              <a href="#como-funciona">
-                <Button size="lg" variant="outline" className="transition-all hover:card-shadow">
-                  Ver como funciona
-                </Button>
-              </a>
+              <Button
+                size="lg"
+                variant="outline"
+                className="transition-all hover:card-shadow"
+                onClick={() => scrollTo("como-funciona")}
+              >
+                Ver como funciona
+              </Button>
             </div>
           </div>
           <div className="animate-fade-up" style={{ animationDelay: "0.2s" }}>
-            <div className="relative rounded-2xl overflow-hidden card-shadow">
-              <img
-                src={heroImg}
-                alt="TaskFlow IA - Plataforma de gerenciamento de tarefas jurídicas"
-                width={1280}
-                height={720}
-                className="w-full h-auto"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-foreground/10 to-transparent" />
-            </div>
+            <DashboardPreview />
           </div>
         </div>
       </div>
