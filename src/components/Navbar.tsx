@@ -27,6 +27,9 @@ const Navbar = () => {
         <div className="flex items-center gap-3">
           {user ? (
             <>
+              <Link to="/tarefas">
+                <Button variant="ghost" size="sm">Minhas Tarefas</Button>
+              </Link>
               <span className="text-sm text-muted-foreground hidden sm:inline">
                 {user.user_metadata?.full_name || user.email}
               </span>
