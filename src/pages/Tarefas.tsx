@@ -101,7 +101,7 @@ const Tarefas = () => {
         user_id: user!.id,
         title: title.trim(),
         description: description.trim() || null,
-        priority,
+        priority: priority as any,
         ai_suggestion: suggestion,
       });
 

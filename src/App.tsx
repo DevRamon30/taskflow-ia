@@ -9,6 +9,7 @@ import Login from "./pages/Login.tsx";
 import Cadastro from "./pages/Cadastro.tsx";
 import RecuperarSenha from "./pages/RecuperarSenha.tsx";
 import RedefinirSenha from "./pages/RedefinirSenha.tsx";
+import Tarefas from "./pages/Tarefas.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
