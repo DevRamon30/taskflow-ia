@@ -123,7 +123,7 @@ const Tarefas = () => {
   };
 
   const handleStatusChange = async (taskId: string, newStatus: string) => {
-    await supabase.from("tasks").update({ status: newStatus }).eq("id", taskId);
+    await supabase.from("tasks").update({ status: newStatus as any }).eq("id", taskId);
     fetchTasks();
   };
 

@@ -27,6 +27,7 @@ const App = () => (
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/recuperar-senha" element={<RecuperarSenha />} />
             <Route path="/redefinir-senha" element={<RedefinirSenha />} />
+            <Route path="/tarefas" element={<Tarefas />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
