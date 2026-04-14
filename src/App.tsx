@@ -9,6 +9,7 @@ import Login from "./pages/Login.tsx";
 import Cadastro from "./pages/Cadastro.tsx";
 import RecuperarSenha from "./pages/RecuperarSenha.tsx";
 import RedefinirSenha from "./pages/RedefinirSenha.tsx";
+import Tarefas from "./pages/Tarefas.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
             <Route path="/cadastro" element={<Cadastro />} />
             <Route path="/recuperar-senha" element={<RecuperarSenha />} />
             <Route path="/redefinir-senha" element={<RedefinirSenha />} />
+            <Route path="/tarefas" element={<Tarefas />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </AuthProvider>
