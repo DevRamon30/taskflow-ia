@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import Logo from "@/components/Logo";
 import { Mail, ArrowLeft } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const RecuperarSenha = () => {
   const [email, setEmail] = useState("");
@@ -13,14 +14,25 @@ const RecuperarSenha = () => {
   const [sent, setSent] = useState(false);
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/redefinir-senha`,
+    });
+
+    if (error) {
+      toast({
+        title: "Erro",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
       setSent(true);
       toast({ title: "Email enviado!", description: "Verifique sua caixa de entrada." });
-      setLoading(false);
-    }, 1000);
+    }
+    setLoading(false);
   };
 
   return (
