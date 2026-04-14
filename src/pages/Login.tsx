@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Logo from "@/components/Logo";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { supabase } from "@/integrations/supabase/client";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -13,14 +14,27 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const { toast } = useToast();
+  const navigate = useNavigate();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setTimeout(() => {
+
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+
+    if (error) {
+      toast({
+        title: "Erro ao entrar",
+        description: error.message === "Invalid login credentials"
+          ? "Email ou senha incorretos."
+          : error.message,
+        variant: "destructive",
+      });
+    } else {
       toast({ title: "Login realizado!", description: "Bem-vindo ao TaskFlow IA." });
-      setLoading(false);
-    }, 1000);
+      navigate("/");
+    }
+    setLoading(false);
   };
 
   return (
