@@ -108,6 +108,7 @@ export type Database = {
           ai_suggestion: string | null
           created_at: string
           description: string | null
+          due_date: string | null
           id: string
           priority: Database["public"]["Enums"]["task_priority"]
           status: Database["public"]["Enums"]["task_status"]
@@ -119,6 +120,7 @@ export type Database = {
           ai_suggestion?: string | null
           created_at?: string
           description?: string | null
+          due_date?: string | null
           id?: string
           priority?: Database["public"]["Enums"]["task_priority"]
           status?: Database["public"]["Enums"]["task_status"]
@@ -130,6 +132,7 @@ export type Database = {
           ai_suggestion?: string | null
           created_at?: string
           description?: string | null
+          due_date?: string | null
           id?: string
           priority?: Database["public"]["Enums"]["task_priority"]
           status?: Database["public"]["Enums"]["task_status"]
